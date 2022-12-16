@@ -1,5 +1,6 @@
 package com.fistkim.springjpawhiteshipstudy;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +15,9 @@ public class User {
     private String name;
 
     private String password;
+
+    @Embedded
+    private Address address;
 
     public User() {
     }
