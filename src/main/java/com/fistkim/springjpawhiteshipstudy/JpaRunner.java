@@ -17,5 +17,14 @@ public class JpaRunner implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
+        Account account = new Account();
+        account.setName("fistkim");
+        entityManager.persist(account);
+
+        Study study = new Study();
+        study.setName("spring data study");
+        study.setOwner(account);
+        account.getStudies().add(study);
+        entityManager.persist(study);
     }
 }
