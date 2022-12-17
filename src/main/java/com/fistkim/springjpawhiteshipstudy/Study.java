@@ -14,7 +14,7 @@ public class Study {
 
     private String name;
 
-    @ManyToOne
-    private Account owner;
+//    @ManyToOne
+//    private Account owner;
 
 }
