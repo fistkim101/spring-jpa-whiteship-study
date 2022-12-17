@@ -14,7 +14,7 @@ public class Account {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private Set<Study> studies;
 
 }
