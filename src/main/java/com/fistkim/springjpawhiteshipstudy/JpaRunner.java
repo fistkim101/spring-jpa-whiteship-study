@@ -17,9 +17,5 @@ public class JpaRunner implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        User user = new User();
-        user.setName("fistkim");
-        user.setPassword("password");
-        entityManager.persist(user);
     }
 }
