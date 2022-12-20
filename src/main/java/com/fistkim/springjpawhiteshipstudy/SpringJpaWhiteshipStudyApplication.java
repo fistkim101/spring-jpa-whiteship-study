@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.repository.query.QueryLookupStrategy;
 
-@EnableJpaRepositories(queryLookupStrategy = QueryLookupStrategy.Key.CREATE_IF_NOT_FOUND)
 @SpringBootApplication
+@EnableJpaRepositories(repositoryImplementationPostfix = "Impl")
 public class SpringJpaWhiteshipStudyApplication {
 
     public static void main(String[] args) {
