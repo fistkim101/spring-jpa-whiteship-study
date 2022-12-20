@@ -16,6 +16,12 @@ public class JpaRunner implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        Post post = postRepository.findMyPost();
+        Post post = new Post();
+        post.setName("event publish test");
+        post.setDescription("event description");
+
+        post.registerEvent();
+        postRepository.save(post);
     }
+
 }

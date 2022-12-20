@@ -1,12 +1,14 @@
 package com.fistkim.springjpawhiteshipstudy;
 
+import org.springframework.data.domain.AbstractAggregateRoot;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Post {
+public class Post extends AbstractAggregateRoot<Post> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +32,9 @@ public class Post {
 
     public String getDescription() {
         return description;
+    }
+
+    public void registerEvent() {
+        PostPublishedEvent postPublishedEvent = new PostPublishedEvent(this);
     }
 }
