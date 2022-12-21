@@ -36,5 +36,6 @@ public class Post extends AbstractAggregateRoot<Post> {
 
     public void registerEvent() {
         PostPublishedEvent postPublishedEvent = new PostPublishedEvent(this);
+        this.registerEvent(postPublishedEvent);
     }
 }
