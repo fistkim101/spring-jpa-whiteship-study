@@ -34,6 +34,10 @@ public class Post extends AbstractAggregateRoot<Post> {
         return description;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void registerEvent() {
         PostPublishedEvent postPublishedEvent = new PostPublishedEvent(this);
         this.registerEvent(postPublishedEvent);
