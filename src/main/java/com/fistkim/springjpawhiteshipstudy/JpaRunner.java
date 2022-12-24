@@ -20,20 +20,11 @@ public class JpaRunner implements ApplicationRunner {
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
         Post post = new Post();
-        post.setName("queryDslTestName");
-        post.setDescription("queryDslTestDescription");
+        post.setName("specificationPostName");
+        post.setDescription("specificationPostDescription");
         postRepository.save(post);
 
-        QPost targetPost = QPost.post;
-        Predicate predicate = targetPost
-                .name.contains("DslTestN")
-                .and(targetPost.description.contains("DslTestDes"));
-        Optional<Post> target = postRepository.findOne(predicate);
 
-        System.out.println("-----------------------");
-        System.out.println(target.get().getName());
-        System.out.println(target.get().getDescription());
-        System.out.println("-----------------------");
     }
 
 }

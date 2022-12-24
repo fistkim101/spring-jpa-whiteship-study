@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @DataJpaTest
 public class PostRepositoryTest {
@@ -16,6 +17,21 @@ public class PostRepositoryTest {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    @Test
+    void specificationTest() {
+        Post post = new Post();
+        final String NAME = "specificationPostName";
+        final String DESCRIPTION = "specificationPostDescription";
+        post.setName(NAME);
+        post.setDescription(DESCRIPTION);
+        postRepository.save(post);
+
+        List<Post> targets = postRepository.findAll(Post.getPostsByCustomSpecification(NAME, null));
+        Assertions.assertThat(targets.size()).isEqualTo(1);
+        Assertions.assertThat(targets.get(0).getName()).isEqualTo(NAME);
+        Assertions.assertThat(targets.get(0).getDescription()).isEqualTo(DESCRIPTION);
+    }
 
     @Test
     void saveTest() {
