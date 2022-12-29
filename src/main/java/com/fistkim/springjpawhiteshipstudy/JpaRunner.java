@@ -13,19 +13,18 @@ import javax.transaction.Transactional;
 public class JpaRunner implements ApplicationRunner {
 
     @PersistenceContext
-    private EntityManager entityManager1;
-
-    @PersistenceContext
-    private EntityManager entityManager2;
+    private EntityManager entityManager;
 
 
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println(">>>>>");
-        System.out.println(entityManager1);
-        System.out.println(entityManager2);
-        System.out.println("<<<<<");
+        Album album = new Album();
+        album.setName("아이템이름");
+        album.setPrice(10000);
+        album.setSinger("가수이름");
+
+        entityManager.persist(album);
     }
 
 }
