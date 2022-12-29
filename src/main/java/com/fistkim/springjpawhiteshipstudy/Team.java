@@ -13,7 +13,26 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
     private Set<Member> members = new HashSet<>();
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void addMember(Member member) {
+        this.members.add(member);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Set<Member> getMembers() {
+        return members;
+    }
 }
