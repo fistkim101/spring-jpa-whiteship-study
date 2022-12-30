@@ -13,7 +13,7 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private Set<Member> members = new HashSet<>();
 
     public void setName(String name) {
