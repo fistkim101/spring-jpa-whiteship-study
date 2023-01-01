@@ -1,5 +1,7 @@
 package com.fistkim.springjpawhiteshipstudy;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,6 +15,7 @@ public class Team {
 
     private String name;
 
+    @BatchSize(size = 100)
     @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private Set<Member> members = new HashSet<>();
 
