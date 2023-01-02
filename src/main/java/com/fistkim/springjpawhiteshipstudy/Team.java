@@ -1,10 +1,8 @@
 package com.fistkim.springjpawhiteshipstudy;
 
-import org.hibernate.annotations.BatchSize;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Team {
@@ -15,9 +13,11 @@ public class Team {
 
     private String name;
 
-    @BatchSize(size = 100)
-    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
-    private Set<Member> members = new HashSet<>();
+    @Version
+    private Integer version;
+
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Member> members = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
@@ -35,7 +35,7 @@ public class Team {
         return id;
     }
 
-    public Set<Member> getMembers() {
+    public List<Member> getMembers() {
         return members;
     }
 }

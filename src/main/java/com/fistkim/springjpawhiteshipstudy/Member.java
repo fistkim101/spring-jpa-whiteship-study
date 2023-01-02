@@ -1,6 +1,7 @@
 package com.fistkim.springjpawhiteshipstudy;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Member {
@@ -29,5 +30,18 @@ public class Member {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(id, member.id) && Objects.equals(name, member.name) && Objects.equals(team, member.team);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, team);
     }
 }
